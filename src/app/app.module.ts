@@ -17,6 +17,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import localePt from '@angular/common/locales/pt'; // Importe a localização brasileira
 import { registerLocaleData } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+
 registerLocaleData(localePt);
 @NgModule({
   declarations: [

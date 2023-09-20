@@ -40,11 +40,20 @@ export class DataService {
 
   filtra(filterData: InspectionFilter): Inspection[] {
     this.inspections = this.mockDados();
-    if (filterData.idRelatorio.length > 0) {
+    if (
+      filterData.idRelatorio != undefined &&
+      filterData.idRelatorio.length > 0
+    ) {
       this.inspections = this.filterByIdReport(filterData);
-    } else if (filterData.cpfCnpj.length > 0) {
+    } else if (
+      filterData.cpfCnpj != undefined &&
+      filterData.cpfCnpj.length > 0
+    ) {
       this.inspections = this.filterByCpfCnpj(filterData);
-    } else if (filterData.postalCode.length > 0) {
+    } else if (
+      filterData.postalCode != undefined &&
+      filterData.postalCode.length > 0
+    ) {
       this.inspections = this.filterByPostalCode(filterData);
     } else if (filterData.dataInicio) {
       this.inspections = this.filterByPeriod(filterData);

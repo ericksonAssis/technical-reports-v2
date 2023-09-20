@@ -9,3 +9,8 @@
 .button-container {
   margin-left: 10px;
 }
+.error-message {
+  background-color: #ffcccc; /* Fundo vermelho claro */
+  border: 1px solid #ff0000; /* Borda vermelha */
+  color: #ff0000; /* Cor do texto vermelho */
+}

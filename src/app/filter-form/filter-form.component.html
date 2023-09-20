@@ -1,51 +1,82 @@
 <!-- filter.component.html -->
-<div>
-  <mat-form-field>
-    <input
-      class="input-small"
-      matInput
-      placeholder="ID do Relatório"
-      [(ngModel)]="filter.idRelatorio"
-    />
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="CPF/CNPJ" [(ngModel)]="filter.cpfCnpj" />
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      class="input-small"
-      matInput
-      placeholder="Código Postal"
-      [(ngModel)]="filter.postalCode"
-    />
-  </mat-form-field>
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+  <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+    <mat-form-field>
+      <input
+        pattern="[0-9]*"
+        class="input-small"
+        matInput
+        placeholder="ID do Relatório"
+        [(ngModel)]="filter.idRelatorio"
+        name="idRelatorio"
+        #idRelatorio="ngModel"
+      />
+    </mat-form-field>
 
-  <mat-form-field class="input-medium">
-    <input
-      class="input-medium"
-      matInput
-      [matDatepicker]="pickerInicio"
-      placeholder="Data de Início"
-      [(ngModel)]="filter.dataInicio"
-    />
-    <mat-datepicker-toggle
-      matSuffix
-      [for]="pickerInicio"
-    ></mat-datepicker-toggle>
-    <mat-datepicker #pickerInicio></mat-datepicker>
-  </mat-form-field>
+    <mat-form-field>
+      <input
+        pattern="[0-9]*"
+        minlength="11"
+        maxlength="14"
+        matInput
+        placeholder="CPF/CNPJ"
+        [(ngModel)]="filter.cpfCnpj"
+        name="cpfCnpj"
+        #cpfCnpj="ngModel"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        pattern="[0-9]*"
+        minlength="8"
+        maxlength="8"
+        class="input-small"
+        matInput
+        placeholder="Código Postal"
+        [(ngModel)]="filter.postalCode"
+        name="postalCode"
+        name="postalCode"
+        #postalCode="ngModel"
+      />
+    </mat-form-field>
 
-  <mat-form-field class="input-medium">
-    <input
-      matInput
-      [matDatepicker]="pickerFim"
-      placeholder="Data de Fim"
-      [(ngModel)]="filter.dataFim"
-    />
-    <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
-    <mat-datepicker #pickerFim></mat-datepicker>
-  </mat-form-field>
-  <!--<button
+    <mat-form-field class="input-medium">
+      <input
+        class="input-medium"
+        matInput
+        [matDatepickerFilter]="validarDataSelecionada"
+        [matDatepicker]="pickerInicio"
+        placeholder="Data de Início"
+        [(ngModel)]="filter.dataInicio"
+        name="dataInicio"
+        #dataInicio="ngModel"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="pickerInicio"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+      <mat-hint>DD/MM/AAAA</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="input-medium">
+      <input
+        matInput
+        [matDatepickerFilter]="validarDataSelecionada"
+        [matDatepicker]="pickerFim"
+        placeholder="Data de Fim"
+        [(ngModel)]="filter.dataFim"
+        name="dataFim"
+        #dataFim="ngModel"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="pickerFim"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerFim></mat-datepicker>
+      <mat-hint>DD/MM/AAAA</mat-hint>
+    </mat-form-field>
+    <!--<button
     class="button-container"
     mat-raised-button
     color="primary"
@@ -61,21 +92,38 @@
   >
     Limpa Filtros
   </button>-->
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="aplicarFiltros()"
-    class="button-container"
-  >
-    <mat-icon>filter_list</mat-icon> Filtrar
-  </button>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      class="button-container"
+    >
+      <mat-icon>filter_list</mat-icon> Filtrar
+    </button>
 
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="limpaFiltros()"
-    class="button-container"
-  >
-    <mat-icon>clear</mat-icon> Limpar
-  </button>
-</div>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="limpaFiltros()"
+      class="button-container"
+    >
+      <mat-icon>clear</mat-icon> Limpar
+    </button>
+  </div>
+  <div class="error-message" *ngIf="!idRelatorio.valid && idRelatorio.touched">
+    Digite apenas números!
+  </div>
+  <div class="error-message" *ngIf="!cpfCnpj.valid && cpfCnpj.touched">
+    Digite um CPF com 11 caracteres numéricos ou um CNPJ com 14 caracteres
+    numéricos sem traços ou barras!
+  </div>
+  <div class="error-message" *ngIf="!postalCode.valid && postalCode.touched">
+    Digite um CEP de 8 caracteres numéricos sem traços!
+  </div>
+  <div *ngIf="!dataInicio.valid && dataInicio.touched">
+    Digite um CEP de 8 caracteres numéricos sem traços!
+  </div>
+  <div *ngIf="!dataFim.valid && dataFim.touched">
+    Digite um CEP de 8 caracteres numéricos sem traços!
+  </div>
+</form>
