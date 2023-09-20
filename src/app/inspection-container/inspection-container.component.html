@@ -1,0 +1,84 @@
+<div class="row">
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Header 1</th>
+          <th>Header 2</th>
+          <th>Header 3</th>
+          <th>Header 4</th>
+          <th>Header 5</th>
+          <th>Header 6</th>
+          <th>Header 7</th>
+          <th>Header 8</th>
+          <th>Header 9</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of items | async; let i = index"
+          (click)="expansionUnit(i)"
+        >
+          <td colspan="9">
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{ item.inspectionNumber }}
+                  </mat-panel-title>
+                  <mat-panel-title>
+                    {{ item.postalCode }}
+                  </mat-panel-title>
+                  <mat-panel-title>
+                    {{ item.inspectionNumber }}
+                  </mat-panel-title>
+                  <mat-panel-title>
+                    {{ item.inspectionNumber }} </mat-panel-title
+                  ><mat-panel-title>
+                    {{ item.inspectionNumber }} </mat-panel-title
+                  ><mat-panel-title>
+                    {{ item.inspectionNumber }} </mat-panel-title
+                  ><mat-panel-title>
+                    {{ item.inspectionNumber }} </mat-panel-title
+                  ><mat-panel-title>
+                    {{ item.inspectionNumber }} </mat-panel-title
+                  ><mat-panel-title>
+                    {{ item.inspectionNumber }}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Item</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>Item {{ i }}</th>
+                        <th>Item {{ i }}</th>
+                        <th>Item {{ i }}</th>
+                        <th>Item {{ i }}</th>
+                        <th>Item {{ i }}</th>
+                        <th>Item {{ i }}</th>
+                        <th>Item {{ i }}</th>
+                        <th>Item {{ i }}</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="paginator-container">
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20, 100]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

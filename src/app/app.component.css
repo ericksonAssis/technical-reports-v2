@@ -1,0 +1,24 @@
+.container {
+  margin-top: 30px;
+}
+
+.mat-accordion {
+  width: 100%;
+  max-width: 100%;
+}
+.table-container {
+  max-height: 400px; /* Defina a altura máxima desejada */
+  overflow-y: auto; /* Adicione uma barra de rolagem vertical quando necessário */
+}
+.paginator-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff; /* Cor de fundo desejada */
+  z-index: 999; /* Garante que o paginator esteja acima de outros elementos */
+}
+/* Adicione esta classe CSS para remover margens e preenchimentos de linhas da tabela */
+.table > tbody > tr > td {
+  margin: 0;
+  padding: 0;
+}
