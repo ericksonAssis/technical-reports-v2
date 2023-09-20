@@ -2,6 +2,7 @@
 <div>
   <mat-form-field>
     <input
+      class="input-small"
       matInput
       placeholder="ID do Relatório"
       [(ngModel)]="filter.idRelatorio"
@@ -12,14 +13,16 @@
   </mat-form-field>
   <mat-form-field>
     <input
+      class="input-small"
       matInput
       placeholder="Código Postal"
       [(ngModel)]="filter.postalCode"
     />
   </mat-form-field>
 
-  <mat-form-field class="input-small">
+  <mat-form-field class="input-medium">
     <input
+      class="input-medium"
       matInput
       [matDatepicker]="pickerInicio"
       placeholder="Data de Início"
@@ -32,7 +35,7 @@
     <mat-datepicker #pickerInicio></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field class="input-small">
+  <mat-form-field class="input-medium">
     <input
       matInput
       [matDatepicker]="pickerFim"
@@ -42,7 +45,7 @@
     <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
     <mat-datepicker #pickerFim></mat-datepicker>
   </mat-form-field>
-  <button
+  <!--<button
     class="button-container"
     mat-raised-button
     color="primary"
@@ -57,5 +60,22 @@
     (click)="limpaFiltros()"
   >
     Limpa Filtros
+  </button>-->
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="aplicarFiltros()"
+    class="button-container"
+  >
+    <mat-icon>filter_list</mat-icon> Filtrar
+  </button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="limpaFiltros()"
+    class="button-container"
+  >
+    <mat-icon>clear</mat-icon> Limpar
   </button>
 </div>

@@ -1,17 +1,25 @@
 <div class="row">
   <div>
-    <table class="table">
+    <table class="table" style="width: 100%">
       <thead>
         <tr>
-          <th>Header 1</th>
-          <th>Header 2</th>
-          <th>Header 3</th>
-          <th>Header 4</th>
-          <th>Header 5</th>
-          <th>Header 6</th>
-          <th>Header 7</th>
-          <th>Header 8</th>
-          <th>Header 9</th>
+          <th class="th-class">
+            {{ headers.inspectionNumber }}
+          </th>
+          <th class="th-class">
+            {{ headers.proponentCpfCnpj }}
+          </th>
+
+          <th class="th-class">
+            {{ headers.proponentName }}
+          </th>
+
+          <th class="th-class">
+            {{ headers.postalCode }}
+          </th>
+          <th class="th-class">
+            {{ headers.reportValidationDate }}
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -19,51 +27,42 @@
           *ngFor="let item of items | async; let i = index"
           (click)="expansionUnit(i)"
         >
-          <td colspan="9">
+          <td colspan="5">
             <mat-accordion>
-              <mat-expansion-panel>
+              <mat-expansion-panel class="custom-expansion-panel">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     {{ item.inspectionNumber }}
                   </mat-panel-title>
                   <mat-panel-title>
+                    {{ item.proponentCpfCnpj }}
+                  </mat-panel-title>
+                  <mat-panel-title> {{ item.proponentName }} </mat-panel-title
+                  ><mat-panel-title>
                     {{ item.postalCode }}
                   </mat-panel-title>
+
                   <mat-panel-title>
-                    {{ item.inspectionNumber }}
-                  </mat-panel-title>
-                  <mat-panel-title>
-                    {{ item.inspectionNumber }} </mat-panel-title
-                  ><mat-panel-title>
-                    {{ item.inspectionNumber }} </mat-panel-title
-                  ><mat-panel-title>
-                    {{ item.inspectionNumber }} </mat-panel-title
-                  ><mat-panel-title>
-                    {{ item.inspectionNumber }} </mat-panel-title
-                  ><mat-panel-title>
-                    {{ item.inspectionNumber }} </mat-panel-title
-                  ><mat-panel-title>
-                    {{ item.inspectionNumber }}
+                    {{ item.reportValidationDate | dateFormat }}
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div>
-                  <table class="table">
+                  <table class="inner-table">
                     <thead>
                       <tr>
-                        <th>Item</th>
+                        <th>{{ headers.postalCode }}</th>
+                        <th>{{ headers.opinion }}</th>
+                        <th>{{ headers.addressComplement }}</th>
+                        <th>{{ headers.analystObservation }}</th>
+                        <th>{{ headers.reportReturnDate }}</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th>Item {{ i }}</th>
-                        <th>Item {{ i }}</th>
-                        <th>Item {{ i }}</th>
-                        <th>Item {{ i }}</th>
-                        <th>Item {{ i }}</th>
-                        <th>Item {{ i }}</th>
-                        <th>Item {{ i }}</th>
-                        <th>Item {{ i }}</th>
-                      </tr>
+                      <td>{{ item.postalCode }}</td>
+                      <td>{{ item.opinion }}</td>
+                      <td>{{ item.addressComplement }}</td>
+                      <td>{{ item.analystObservation }}</td>
+                      <td>{{ item.reportReturnDate | dateFormat }}</td>
                     </tbody>
                   </table>
                 </div>

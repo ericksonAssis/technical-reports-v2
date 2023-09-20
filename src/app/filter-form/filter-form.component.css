@@ -1,0 +1,11 @@
+.input-small {
+  width: 150px; /* Defina a largura desejada conforme necessário */
+}
+
+.input-medium {
+  width: 200px; /* Defina a largura desejada conforme necessário */
+}
+/* styles.css */
+.button-container {
+  margin-left: 10px;
+}

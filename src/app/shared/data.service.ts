@@ -122,7 +122,7 @@ export class DataService {
     return (this.inspections = [
       {
         inspectionNumber: '5555',
-        proponentCpfCnpj: '11111',
+        proponentCpfCnpj: '11111111111111',
         proponentName: 'Erickson',
         postalCode: '06410200',
         opinion: 'opinion Teste',
@@ -135,8 +135,8 @@ export class DataService {
 
       {
         inspectionNumber: '1234',
-        proponentCpfCnpj: '22222',
-        proponentName: 'proponentName',
+        proponentCpfCnpj: '22222222222222',
+        proponentName: 'Empresa Teste Com nome Comprimdo SA',
         postalCode: '05960200',
         opinion: 'opinion',
         addressComplement: 'addressComplement',

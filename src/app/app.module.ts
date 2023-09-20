@@ -11,8 +11,13 @@ import { InspectionContainerComponent } from './inspection-container/inspection-
 import { FilterFormComponent } from './filter-form/filter-form.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
+import { DateFormatPipe } from './shared/date-format.pipe';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import localePt from '@angular/common/locales/pt'; // Importe a localização brasileira
+import { registerLocaleData } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +34,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     MatButtonModule,
     MatNativeDateModule,
+    DateFormatPipe,
+    MatIconModule,
   ],
-  providers: [],
+  providers: [
+    // Configure o MAT_DATE_LOCALE para 'pt-BR'
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

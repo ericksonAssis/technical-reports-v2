@@ -1,0 +1,19 @@
+.th-class {
+  width: 20%;
+  text-align: left;
+}
+
+.inner-table {
+  text-align: left;
+  width: 100%;
+}
+
+.table > tbody > tr > td {
+  margin: 0;
+  padding: 0;
+}
+
+.custom-expansion-panel {
+  margin-top: 0; /* Defina a margem superior desejada ou remova-a para não haver margem */
+  margin-bottom: 0; /* Defina a margem superior desejada ou remova-a para não haver margem */
+}

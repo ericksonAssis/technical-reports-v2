@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { DataService } from '../shared/data.service';
 import { Inspection } from '../model/inspection.model';
+import { Header } from '../model/inspection-header.model';
 
 @Component({
   selector: 'app-inspection-container',
@@ -17,7 +18,6 @@ export class InspectionContainerComponent {
   step: number;
   response: any;
   dataSource = new MatTableDataSource();
-
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
@@ -39,4 +39,5 @@ export class InspectionContainerComponent {
   expansionUnit(index) {
     this.step = index;
   }
+  headers: Header = new Header();
 }
