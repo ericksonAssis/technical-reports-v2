@@ -1,3 +1,4 @@
+<div class="row" style="height: 40px"></div>
 <div class="row">
   <div>
     <table class="table" style="width: 100%">
@@ -20,6 +21,8 @@
           <th class="th-class">
             {{ headers.reportValidationDate }}
           </th>
+
+          <th class="th-class">Download</th>
         </tr>
       </thead>
       <tbody>
@@ -27,7 +30,7 @@
           *ngFor="let item of items | async; let i = index"
           (click)="expansionUnit(i)"
         >
-          <td colspan="5">
+          <td colspan="6">
             <mat-accordion>
               <mat-expansion-panel class="custom-expansion-panel">
                 <mat-expansion-panel-header>
@@ -44,6 +47,11 @@
 
                   <mat-panel-title>
                     {{ item.reportValidationDate | dateFormat }}
+                  </mat-panel-title>
+                  <mat-panel-title>
+                    <button mat-button (click)="downloadPDF(item.reportPath)">
+                      Download PDF
+                    </button>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div>

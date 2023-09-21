@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { DataService } from '../shared/data.service';
 import { Inspection } from '../model/inspection.model';
 import { Header } from '../model/inspection-header.model';
+import { DownloadService } from '../shared/download.service';
 
 @Component({
   selector: 'app-inspection-container',
@@ -18,7 +19,10 @@ export class InspectionContainerComponent {
   step: number;
   response: any;
   dataSource = new MatTableDataSource();
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private downloadService: DownloadService
+  ) {}
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -40,4 +44,9 @@ export class InspectionContainerComponent {
     this.step = index;
   }
   headers: Header = new Header();
+
+  downloadPDF(reportPath: string) {
+    event.stopPropagation();
+    this.downloadService.downloadPDF(reportPath);
+  }
 }

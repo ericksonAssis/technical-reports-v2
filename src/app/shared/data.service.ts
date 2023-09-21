@@ -105,8 +105,9 @@ export class DataService {
       // Verifique se a data de validação do relatório está dentro do período
       if (filterData.dataInicio && filterData.dataFim) {
         return (
-          element.reportValidationDate >= filterData.dataInicio &&
-          element.reportValidationDate <= filterData.dataFim
+          element.reportValidationDate >=
+            this.startOfDay(filterData.dataInicio) &&
+          element.reportValidationDate <= this.endOfDay(filterData.dataFim)
         );
       }
 
@@ -125,6 +126,19 @@ export class DataService {
     });
 
     return elements;
+  }
+
+  startOfDay(date: Date): Date {
+    const adjustedDate = new Date(date);
+    adjustedDate.setHours(0, 0, 0, 0);
+    return adjustedDate;
+  }
+
+  // Função para ajustar uma data para o final do dia (hora 23:59:59)
+  endOfDay(date: Date): Date {
+    const adjustedDate = new Date(date);
+    adjustedDate.setHours(23, 59, 59, 999);
+    return adjustedDate;
   }
 
   mockDados() {
@@ -238,6 +252,26 @@ export class DataService {
         reportPath: 'reportPath',
         reportValidationDate: new Date(),
         reportReturnDate: new Date(),
+      },
+      {
+        inspectionNumber: '1234',
+        proponentCpfCnpj: '22222',
+        proponentName: 'proponentName',
+        postalCode: '05960200',
+        opinion: 'opinion',
+        addressComplement: 'addressComplement',
+        analystObservation: 'analystObservation',
+        reportPath: 'reportPath',
+        reportValidationDate: new Date(
+          2022,
+          new Date().getMonth(),
+          new Date().getDate()
+        ),
+        reportReturnDate: new Date(
+          2022,
+          new Date().getMonth(),
+          new Date().getDate()
+        ),
       },
     ]);
   }
