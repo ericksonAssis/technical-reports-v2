@@ -4,27 +4,10 @@
     <table class="table" style="width: 100%">
       <thead>
         <tr>
-          <th class="th-class">
-            {{ headers.inspectionNumber }}
-          </th>
-          <th class="th-class">
-            {{ headers.proponentCpfCnpj }}
-          </th>
-
-          <th class="th-class">
-            {{ headers.proponentName }}
-          </th>
-
-          <th class="th-class">
-            {{ headers.postalCode }}
-          </th>
-          <th class="th-class">
-            {{ headers.reportValidationDate }}
-          </th>
-
-          <th class="th-class">Download</th>
+          <app-header></app-header>
         </tr>
       </thead>
+
       <tbody>
         <tr
           *ngFor="let item of items | async; let i = index"

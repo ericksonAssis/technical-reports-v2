@@ -18,6 +18,7 @@ import localePt from '@angular/common/locales/pt'; // Importe a localização br
 import { registerLocaleData } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -25,6 +26,7 @@ registerLocaleData(localePt);
     AppComponent,
     InspectionContainerComponent,
     FilterFormComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

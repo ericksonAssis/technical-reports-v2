@@ -9,4 +9,5 @@ export class Header {
   reportPath: string = 'Report Path';
   reportValidationDate: string = 'Dt Validação';
   reportReturnDate: string = 'Data Retorno';
+  download: string = 'Download';
 }
